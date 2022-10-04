@@ -10,9 +10,14 @@ const readTalkerManagerFile = async () => {
   }
 };
 
-const getAllPeople = async () => {
+const getAllTalkers = async () => {
   const file = await readTalkerManagerFile();
   return file;
 };
 
-module.exports = getAllPeople;
+const getTalkerById = async (id) => {
+  const file = await readTalkerManagerFile();
+  return file.find((p) => p.id === parseInt(id, 10));
+};
+
+module.exports = { getAllTalkers, getTalkerById };
