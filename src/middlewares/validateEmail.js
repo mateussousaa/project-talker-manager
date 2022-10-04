@@ -1,4 +1,5 @@
 const verifyEmailValid = (email) => {
+  // supplied by regexr.com
   const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   return email.match(regex);
 };
@@ -17,18 +18,4 @@ const validateEmail = (request, response, next) => {
   next();
 };
 
-const validatePassword = (request, response, next) => {
-  const { password } = request.body;
-  if (!password) {
-    return response.status(400)
-      .json({ message: 'O campo "password" é obrigatório' }); 
-  }
-  if (password.length < 6) {
-    return response.status(400)
-    .json({ message: 'O "password" deve ter pelo menos 6 caracteres' }); 
-  }
-
-  next();
-};
-
-module.exports = { validateEmail, validatePassword };
+module.exports = validateEmail;

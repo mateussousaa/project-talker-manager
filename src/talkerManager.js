@@ -1,9 +1,11 @@
 const fs = require('fs').promises;
 const { join } = require('path');
 
+const pathToTalkerFile = join(__dirname, 'talker.json');
+
 const readTalkerManagerFile = async () => {
   try {
-    const talkerFile = await fs.readFile(join(__dirname, 'talker.json'), 'utf-8');
+    const talkerFile = await fs.readFile(pathToTalkerFile, 'utf-8');
     return JSON.parse(talkerFile);
   } catch (e) {
     return null;
@@ -20,4 +22,15 @@ const getTalkerById = async (id) => {
   return file.find((p) => p.id === parseInt(id, 10));
 };
 
-module.exports = { getAllTalkers, getTalkerById };
+const createTalker = async (talker) => {
+  try {
+    const file = await readTalkerManagerFile();
+    const newFile = [...file, talker];
+    await fs.writeFile(pathToTalkerFile, JSON.stringify(newFile));
+    return talker;
+  } catch (e) {
+    return null;
+  }
+};
+
+module.exports = { getAllTalkers, getTalkerById, createTalker };
