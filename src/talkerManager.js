@@ -47,4 +47,16 @@ const editTalker = async (id, { name, age, talk }) => {
   }
 };
 
-module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker };
+const deleteTalker = async (id) => {
+  try {
+    const file = await readTalkerManagerFile();
+    const filteredFile = file.filter((t) => t.id !== parseInt(id, 10));
+    console.log(filteredFile);
+    await fs.writeFile(pathToTalkerFile, JSON.stringify(filteredFile));
+    return filteredFile;
+  } catch (e) {
+    return null;
+  }
+};
+
+module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker, deleteTalker };
