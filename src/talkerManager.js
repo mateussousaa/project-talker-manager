@@ -19,7 +19,7 @@ const getAllTalkers = async () => {
 
 const getTalkerById = async (id) => {
   const file = await readTalkerManagerFile();
-  return file.find((p) => p.id === parseInt(id, 10));
+  return file.find((t) => t.id === parseInt(id, 10));
 };
 
 const createTalker = async (talker) => {
@@ -33,4 +33,18 @@ const createTalker = async (talker) => {
   }
 };
 
-module.exports = { getAllTalkers, getTalkerById, createTalker };
+const editTalker = async (id, { name, age, talk }) => {
+  try {
+    const file = await readTalkerManagerFile();
+    const index = file.findIndex((t) => t.id === parseInt(id, 10));
+    file[index].name = name;
+    file[index].age = age;
+    file[index].talk = talk;
+    await fs.writeFile(pathToTalkerFile, JSON.stringify(file));
+    return file[index];
+  } catch (e) {
+    return null;
+  }
+};
+
+module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker };

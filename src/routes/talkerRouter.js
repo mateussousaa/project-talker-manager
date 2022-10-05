@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllTalkers, getTalkerById, createTalker } = require('../talkerManager');
+const { getAllTalkers, getTalkerById, createTalker, editTalker } = require('../talkerManager');
 const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 const validateName = require('../middlewares/validateName');
 const validateAge = require('../middlewares/validateAge');
@@ -37,6 +37,23 @@ router.post('/talker',
     const talker = { name, age, id, talk };
     await createTalker(talker);
     return response.status(201).json(talker);
+  } catch (e) {
+    return response.status(400).json({ message: 'error' });
+  }
+});
+
+router.put('/talker/:id',
+ensureAuthenticated, 
+validateName, 
+validateAge,
+validateTalk,
+validateWatchedAt,
+validateRate, async (request, response) => {
+  try {
+  const { id } = request.params;
+  const { name, age, talk } = request.body;
+  const talker = await editTalker(id, { name, age, talk });
+  response.status(200).json(talker);
   } catch (e) {
     return response.status(400).json({ message: 'error' });
   }

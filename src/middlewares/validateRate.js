@@ -1,6 +1,6 @@
 const validateRate = (request, response, next) => {
   const { talk: { rate } } = request.body;
-  if (!rate) {
+  if (rate === undefined) {
     return response.status(400)
       .json({ message: 'O campo "rate" é obrigatório' }); 
   } 
