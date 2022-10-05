@@ -57,6 +57,16 @@ const deleteTalker = async (id) => {
   } catch (e) {
     return null;
   }
+};  
+
+const searchTalker = async (query) => {
+  try {
+    const file = await readTalkerManagerFile();
+    const talkers = file.filter(({ name }) => name.includes(query));
+    return talkers;
+  } catch (e) {
+    return null;
+  }
 };
 
-module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker, deleteTalker };
+module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker, deleteTalker, searchTalker };

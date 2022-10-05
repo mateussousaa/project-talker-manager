@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAllTalkers, getTalkerById, createTalker,
-  editTalker, deleteTalker } = require('../talkerManager');
+  editTalker, deleteTalker, searchTalker } = require('../talkerManager');
 const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 const validateName = require('../middlewares/validateName');
 const validateAge = require('../middlewares/validateAge');
@@ -14,6 +14,17 @@ const router = express.Router();
 router.get('/talker', async (request, response) => {
   const people = await getAllTalkers();
   return response.status(200).json(people);
+});
+
+router.get('/talker/search',
+ensureAuthenticated, async (request, response) => {
+  const { q } = request.query;
+  if (!q) {
+    const people = await getAllTalkers();
+    return response.status(200).json(people);
+  }
+  const talkers = await searchTalker(q);
+  return response.status(200).json(talkers);
 });
 
 router.get('/talker/:id', async (request, response) => {
