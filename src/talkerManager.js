@@ -69,4 +69,11 @@ const searchTalker = async (query) => {
   }
 };
 
-module.exports = { getAllTalkers, getTalkerById, createTalker, editTalker, deleteTalker, searchTalker };
+module.exports = { 
+  getAllTalkers,
+  getTalkerById, 
+  createTalker,
+  editTalker,
+  deleteTalker, 
+  searchTalker, 
+};
