@@ -1,6 +1,8 @@
 const fs = require('fs').promises;
 const { join } = require('path');
 
+// Project Done
+
 const pathToTalkerFile = join(__dirname, 'talker.json');
 
 const readTalkerManagerFile = async () => {
