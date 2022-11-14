@@ -8,7 +8,6 @@
 - Desenvolvi uma API de um CRUD (Create, Read, Update e Delete) de palestrantes (talkers) e alguns endpoints para ler e escrever em um arquivo utilizando o módulo fs.
 
 <br/>
-<br/>
 
 ## Documentação da API
 ---
