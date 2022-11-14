@@ -11,7 +11,7 @@
 
 ### Realiza login
 
-```http
+```
   POST /login
 ```
 
@@ -35,7 +35,7 @@
 
 ### Retorna todos os palestrantes
 
-```http
+```
   GET /talker
 ```
 
@@ -43,7 +43,7 @@
 
 ### Retorna um palestrante
 
-```http
+```
   GET /talker/:id
 ```
 
@@ -55,7 +55,7 @@
 
 ### Retorna um palestrante pelo nome.
 
-```http
+```
   GET /talker/search?q=searchTerm
 ```
 
@@ -67,7 +67,7 @@
 
 ### Cadastra um novo palestrante.
 
-```http
+```
   POST /talker
 ```
 - Request Body
@@ -85,7 +85,7 @@
 
 ### Atualiza os dados de um palestrante cadastrado.
 
-```http
+```
   PUT /talker/:id
 ```
 
@@ -99,7 +99,7 @@
 
 ### Deleta um palestrante pelo id.
 
-```http
+```
   DELETE /talker/:id
 ```
 
