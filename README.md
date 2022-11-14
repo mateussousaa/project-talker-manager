@@ -1,9 +1,6 @@
 # Talker Manager
 ---
 
-## O que foi desenvolvido
-- Desenvolvi uma aplicação de cadastro de talkers (palestrantes) onde é possível cadastrar, visualizar, pesquisar, editar e excluir informações.
-
 ## Desenvolvimento
 - Desenvolvi uma API de um CRUD (Create, Read, Update e Delete) de palestrantes (talkers) e alguns endpoints para ler e escrever em um arquivo utilizando o módulo fs.
 
